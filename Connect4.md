@@ -71,7 +71,7 @@ class game{
             createPlayer(){
                 document.queryrSelector(input)
                 document.queryrSelector(input)
-                this.player1 = new Player(document.queryselectpr(inpptu), doc.)
+                this.player1 = new Player(document.queryselectpr(input), doc.)
 
             }
 }
