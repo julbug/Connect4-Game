@@ -31,11 +31,8 @@ class GenerateBoard {
          document.getElementById("game-board").tile
          console.log({tile})
     }
-
-    function 
-
-
-generateGameBoard() {
+    
+  generateGameBoard() {
   let boardCode = ""
   for (let x = 0; x < 6; x++) {
     for (let y = 0; y < 7; y++) {
