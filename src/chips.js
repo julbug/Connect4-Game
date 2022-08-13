@@ -1,8 +1,10 @@
 class Chip {
-    constructor(x,y,image) {
+    constructor(x,y,color) {
         this.x = x
         this.y = y
-        this.image = ""
+        this.color = color
     }
 }
+
+
 

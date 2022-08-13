@@ -1,36 +1,23 @@
-// let playerOne;
-// let playerTwo;
-// let 
 
+const boardchoice = [x,y]
+const player1 
+const player2 
 
-// class Player{
+class Player {
+constructor (color){
+this.Color = color;
+}
 
-// constructor (playerName, color){
-//     this.name = playerName;
-//     this.chosenColor = color;
-// }
-// createPlayer(){
+    document.getElementsByClassName(".tile").onclick = function () {
+        
+    }
 
-// }
+playerTurn(){
+  if (player1 === true){
+        document.getElementsByClassName('.tile').style.color = "red";
+    } else {
+        document.getElementsByClassName('.tile').style.color = "black";
+    }
+}
 
-
-
-//     }
-
-//     // placeChip(x,y,player){
-//     //     this.gameBoard[x, y] = {img: `${player.color}.red-piece`}
-
-    
-// }
-
-//  let playerOne = true;
-
-// function placeChip(){
-//   document.querySelector(".tile").style.background-color.red
-// }
-
-//=====BluePrint for Players======
-// create a player class
-// create 2 players
-// assign 2 colors for the 2 players
-//
+}

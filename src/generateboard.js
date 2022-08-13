@@ -8,25 +8,9 @@ class GenerateBoard {
     }
     
 
-    // generateGameBoard(){
-    //     let board = [];
-    //     console.log ({board});
-
-    // for (let r = 0; r< 6; r++){
-    //     let row = [];
-    //     console.log ({row});
-    //  for (let c = 0; c < 7; c++){
-    //      row.push(' ');
-    //      this.generateTile(r,c);
-    //     }
-    //     board.push(row);
-    // }
-    //     this.gameBoard = board;
-    // }
-
-   generateTile(r,c) {
+   generateTile(x,y) {
     let tile = document.createElement("div");
-         tile.id = r.toString() + "-" + c.toString();
+         tile.id = x.toString() + "-" + y.toString();
          tile.classList.add("tile");
          document.getElementById("game-board").tile
          console.log({tile})

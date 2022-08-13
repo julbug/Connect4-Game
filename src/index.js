@@ -1,7 +1,3 @@
-let playerOne = "1";
-let playerTwo = "2";
-// let currPlayer = playerOne;
-
 let gameOver = false;
 let board;
 
