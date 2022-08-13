@@ -1,7 +1,11 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+<<<<<<< HEAD
     background-image: url(./496765187c040c2072e7f065c92c0e97.jpeg);
+=======
+    background-image: url(../Connect4_local/496765187c040c2072e7f065c92c0e97.jpeg);
+>>>>>>> 499c36bf561431cdf7229cedffe18c801386f019
 }
 
 .game-title {
