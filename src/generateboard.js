@@ -1,47 +1,34 @@
-class Game {
+class GenerateBoard {
     constructor(){
 
-    this.gameBoard = []
+       this.gameBoard = []
+       
+       this.generateGameBoard();
 
-    this.generateGameBoard();
-
-   
     }
-
     
 
-    generateGameBoard(){
-        let board = [];
-        //console.log({board});
-    for (let r = 0; r < 6; r++){
-        let row = [];
-        //console.log({row});
-     for (let c = 0; c < 7; c++){
-        row.push(' ');
-        this.generateTile(r, c);
-        }
-        board.push(row);
-    }
-        this.gameBoard = board;
-
-    }
-
-
-    generateTile(r, c) {
+    generateTile(r,c) {
         let tile = document.createElement("div");
-         tile.id = r.toString() + "-" + c.toString();
-         tile.classList.add("tile");
-         document.getElementById("game-board").tile
-        //console.log({tile});
-    }
+             tile.id = r.toString() + "-" + c.toString();
+             tile.classList.add("tile");
+             document.getElementById("game-board").tile
+             console.log({tile})
+        }
     
-
-}
-
-const newGame = new Game();
-    console.log({newGame});
-
-
+        function 
+    
+    
+    generateGameBoard() {
+      let boardCode = ""
+      for (let x = 0; x < 6; x++) {
+        for (let y = 0; y < 7; y++) {
+              boardCode += `<div class="tile" id=${x}-${y} data-position-x="${x}" data-position-y="${y}"></div>`;
+            }
+          }
+        return boardCode
+      }
+    }
 
     //==BluePrint for Game====
     // create class for game - done
@@ -56,3 +43,7 @@ const newGame = new Game();
     //function for restart/reset buttons to restart the game
     //function to keep score
  
+
+    //chip class for tokens
+    //refer to card game screenshot
+    
