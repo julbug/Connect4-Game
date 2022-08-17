@@ -5,19 +5,10 @@ class GenerateBoard {
        
        this.generateGameBoard();
 
-    }
-    
+       this.player1 = true;
 
-    generateTile(r,c) {
-        let tile = document.createElement("div");
-             tile.id = r.toString() + "-" + c.toString();
-             tile.classList.add("tile");
-             document.getElementById("game-board").tile
-             console.log({tile})
-        }
-    
+    }
      
-    
     
     generateGameBoard() {
       let boardCode = ""

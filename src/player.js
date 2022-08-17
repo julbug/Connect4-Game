@@ -1,17 +1,14 @@
-class Player{
+class Player {
 
-constructor (color, xPlayerChoice, yPlayerChoice){
-    this.chosenColor = color;
-    this.xPlayerChoice = xPlayerChoice;
-    this.yPlayerChoice = yPlayerChoice;
-}
-createPlayer(){
-
-}
+    constructor (color){
+    this.Color = color;
+    }
+    
+        
+    }
 
 
 //=====BluePrint for Players======
-// create a player class
-// create 2 players
-// assign 2 colors for the 2 players
-//
+// create a player class - done
+// create 2 players - done
+// assign 2 colors for the 2 players - done?
