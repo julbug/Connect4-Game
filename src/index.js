@@ -4,8 +4,6 @@ let gameOver = false;
 let board;
 
 
-
-
 let gameBoard = new GenerateBoard;
 
 let player1 = new Player;
