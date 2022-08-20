@@ -1,8 +1,10 @@
 class Player {
 
-    constructor (color){
-    this.Color = color;
-    }
+
+    //DO WE NEED THIS??
+    // constructor (color){
+    // this.Color = color;
+    // }
     
         
     }
