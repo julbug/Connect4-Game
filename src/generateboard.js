@@ -19,7 +19,46 @@ class GenerateBoard {
           }
         return boardCode
       }
+    
+    checkForWinner() {
+      
     }
+
+    checkVertical() {
+      for (let y = 0; y <= 6; y++){
+       for (let x = 0; x <=5; x++){
+        //console log the color of the div with the ID of x-y
+        console.log(currentDiv.style.backgroundColor + gridposition)
+       }
+      }
+  
+    }
+
+    checkHorizontal() {
+      for (let x = 0; x <= 5; x++){
+
+      }
+      }
+
+    // playerTurn() {
+    //   if (this.player1){
+    //     return "Player 1"
+    //   } else {
+    //     return "Player 2"
+    //   }
+
+    // }
+
+    // }
+
+    // function updatePlayerTurn {
+      
+    // }
+  
+  //   checkDiagonalRightUp()
+  //   checkDiagonalLeftUp()
+
+  // }
 
 
 
