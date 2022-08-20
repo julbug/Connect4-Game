@@ -14,7 +14,6 @@ body{
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-
     width: 630px;
     height: 540px;
     background: black;
@@ -22,10 +21,18 @@ body{
    
   }
 
-  #playerturn {
+#playerturn {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+h2 {
+    margin-top: -15px;
+}
+
+p {
+    font-size: 20px;
 }
 
 .tile {
@@ -37,3 +44,10 @@ body{
     border: 5px solid goldenrod;
 }
 
+.reset {
+    background-color: goldenrod;
+    font-size: 25px;
+    color: black;
+    padding: 10px 10px;
+    border: 4px solid black;
+}

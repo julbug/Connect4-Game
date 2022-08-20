@@ -1,31 +1,54 @@
 
+//function for changing player turns and chip color
     document.querySelector("#game-board").onclick= function(e){
 
-        if (e.target.classList.contains("tile")) {
+//check if its a tile and if its player one        
+        if (e.target.classList.contains("tile")){
 
-            let gridPosition = e.target.id 
+            let gridPosition = e.target.id
 
-            for (let x = 5; x >= 0; x--) {
+            //run a reverse loop
+            for (let x = 5; x >= 0; x--){    
+                
+               // grab next position
             let nextPosition = x + "-" + gridPosition[2]
-            console.log(gridPosition[0])
+            
             let currentDiv = document.getElementById(nextPosition);
 
-            if (!currentDiv.style.backgroundColor) {
-                if (gameBoard.player1) {
+            if (!currentDiv.style.backgroundColor){
+                if(gameBoard.player1){
+               
                 currentDiv.style.backgroundColor="#8A9A5B";
-                break; 
-                }
-                else if(!gameBoard.player1) {
-                    currentDiv.style.backgroundColor="black";
+
+                //break stops the for loop, so essentially we are stopping the for loop after each color change 
                 break;
-                }
+
+            } else if(!gameBoard.player1){
+
+                currentDiv.style.backgroundColor="maroon";
+
+                break;
             }
-            console.log(currentDiv.style.backgroundColor + " " + gridPosition);
-            }
-        }   
-            
-            gameBoard.player1 = !gameBoard.player1
+    
+
+        }
 
     }
-                
-      
+    setTimeout(
+        gameBoard.checkHorizontal,
+        10
+    )
+    
+}
+        //check for winner (define in game board class)
+        gameBoard.player1 = !gameBoard.player1
+        showPlayerStatus();
+        
+    }
+
+
+            
+ 
+
+
+    
