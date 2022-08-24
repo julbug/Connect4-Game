@@ -6,20 +6,18 @@
         if (e.target.classList.contains("tile")){
 
             let gridPosition = e.target.id
+            let gridX = e.target.data-position-x
+            let gridY = e.target.data-position-y
+            console.log({gridPosition, gridX, gridY})
 
             //run a reverse loop
             for (let x = 5; x >= 0; x--){    
                 
                 
-               // grab next position
+            // grab next position
             let nextPosition = x + "-" + gridPosition[2]
 
-            // console.log(nextPosition); 
             let currentDiv = document.getElementById(nextPosition);
-
-
-            // console.log(currentDiv);
-            // console.log(currentDiv.style.backgroundColor);
 
             if (!currentDiv.style.backgroundColor){
                 if(gameBoard.player1){
@@ -31,7 +29,8 @@
 
             } else if(!gameBoard.player1){
 
-                currentDiv.style.backgroundColor="maroon";
+                currentDiv.style.backgroundColor="#885A61";
+                
 
                 break;
             }
@@ -41,7 +40,7 @@
 
     }
     setTimeout(
-        gameBoard.checkHorizontal,
+        gameBoard.checkRightUpDiagonal,
         10
     )
     
@@ -52,11 +51,5 @@
         gameBoard.player1 = !gameBoard.player1
         showPlayerStatus();
         
+        
     }
-
-
-            
- 
-
-
-    

@@ -2,7 +2,8 @@ class GenerateBoard {
     constructor(){
 
        this.gameBoard = []
-       
+       this.firstPlayer = new Player('Player 1', 'Black');
+       this.secondPlayer = new Player('Player 2', 'Red');
        this.generateGameBoard();
 
        this.player1 = true;
@@ -22,15 +23,17 @@ class GenerateBoard {
 
 
       checkForWinner(){
-      checkVertical()
-      checkHorizontal()
-      //   checkRightUpDiagonal()
+      if (checkVertical() ||
+      checkHorizontal() ||
+      checkDiagonal()) {
+          alert ("Game Over");
+      }
       //   checkLeftUpDiagonal()
       }
 
 
       checkVertical(){
-        let gameOver = false;
+        // let gameOver = false;
         let verticalWinner = [];
           for (let y = 0; y <= 6; y++) {
             for (let x = 0; x <= 5; x++){
@@ -40,15 +43,17 @@ class GenerateBoard {
             }
         } 
         for (let i = 0; i < verticalWinner.length; i++){
-          //console.log(verticalWinner[i])
+          
           if (verticalWinner[i] && (verticalWinner[i] == verticalWinner[i + 1]) && (verticalWinner[i] == verticalWinner[i + 2]) && (verticalWinner[i] == verticalWinner[i + 3])){
-         gameOver = true;
+        //  gameOver = true;
+         return true
           }
          
         }
-         if (gameOver){
-           alert ("Game Over")
-         }
+        return false
+        //  if (gameOver){
+        //    alert ("Game Over")
+        //  }
       }
        
 
@@ -75,6 +80,82 @@ class GenerateBoard {
       }
 
 
+      //Cheack diagonal attempt
+
+      
+      checkDiagonal = () => {
+        let gridX, gridY;
+        let result = 1;
+        let currentDiv = document.getElementById(`${x}-${y}`)
+        let currentGridPosition = this.gameBoard[gridX][gridY]
+        gridX = currentDiv[0]
+        gridY = currnetDiv[2]
+        let direction = 'se'
+        const directionsArray = ['se', 'ne', 'sw', 'nw']
+
+        console.log({gridX, gridY, currentDiv, currentGridPosition});
+      
+        for(let x = 1; x < 4; x++) {
+          for(let y = 1; y < 4; y++) {
+            switch(direction) {
+              case directionsArray[0]:
+              if(currentGridPosition === this.gameBoard[x][y]) {
+                if(result === 1 && direction !== directionsArray[0]) {
+                  direction = directionsArray[0]
+                } else if (direction === directionsArray[0]) {
+                  result += 1;
+                  currentGridPosition = this.gameBoard[x][y]
+                }
+              }
+                break;
+      
+              case directionsArray[1]:
+              if(currentGridPosition === this.gameBoard[x-1][y+1]) {
+                if(result === 1 && direction !== directionsArray[1]) {
+                  direction = directionsArray[1]
+                } else if (direction === directionsArray[1]) {
+                  result += 1;
+                  currentGridPosition = this.gameBoard[x-1][y+1]
+                }
+              }
+                break;
+      
+              case directionsArray[2]:
+              if(currentGridPosition === this.gameBoard[x+1][y-1]) {
+                if(result === 1 && direction !== directionsArray[2]) {
+                  direction = directionsArray[2]
+                } else if (direction === directionsArray[2]) {
+                  result += 1;
+                  currentGridPosition = this.gameBoard[x+1][y-1]
+                }
+              }
+                break;
+      
+              case directionsArray[3]:
+              if(currentGridPosition === this.gameBoard[x-1][y-1]) {
+                if(result === 1 && direction !== directionsArray[3]) {
+                  direction = directionsArray[3]
+                } else if (direction === directionsArray[3]) {
+                  result += 1;
+                  currentGridPosition = this.gameBoard[x][y]
+                }
+              }
+                break;
+      
+              
+            }
+          }
+        }
+      
+        if (result === 4) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+
+
         playerTurn(){
           if(this.player1){
             return "Player 1"
@@ -83,30 +164,35 @@ class GenerateBoard {
           }
         }
 
-
-
       }
 
       function showPlayerStatus(){
         let status = document.querySelector('.playerturn span');
         status.innerText = gameBoard.playerTurn();
       }
+
     
-  
-   
+        document.querySelector('.reset').addEventListener('click', function(){
+          window.location.reload();
+          return false;
+        });
+      
+    
+    
 
+        //Winner announcement attempt
 
-
-
-    //==BluePrint for Game====
-    // create class for game - done
-    //create a function for loading the gameboard - done
-    //alert for directions
-    // create a function to alternate players turns (currentPlayer)
-    //create a function for placing the chips in columns (refresh board after each move to show updated board)
-    //creating a function for placing chips on top of each other instead of overlapping (placeChip)
-    //create a function to check if a selceted column is full [if it is, alert user to select another column]
-    //function to check if the current move was a winning move (checkWon)
-    //function to declare a winner if there is one (winningArray)
-    //function for restart/reset buttons to restart the game
-    //function to keep score
+        // if(playerWon === 1){
+        //   textAlign(CENTER, CENTER);
+        //   fill(255, 255, 0);
+        //   text("Yellow wins!", width / 2, ((height / board.length)*2 / 3)-25);
+          
+        // } else if(playerWon === 2){
+        //   textAlign(CENTER, CENTER);
+        //   fill(255, 0, 0);
+        //   text("Red wins!", width / 2, ((height / board.length)*2 / 3)-25);
+        // }
+        // else{
+        //   textAlign(CENTER, CENTER);
+        //   fill(0);
+        //   text("It's a draw!", width / 2, ((height / board.length)*2 / 3)-25)
