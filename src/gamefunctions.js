@@ -45,8 +45,6 @@
     )
     
 }
-
-
         //check for winner (define in game board class)
         gameBoard.player1 = !gameBoard.player1
         showPlayerStatus();

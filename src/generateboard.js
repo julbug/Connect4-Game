@@ -78,6 +78,8 @@ class GenerateBoard {
            alert ("Game Over")
          }
       }
+      //checkDiagonalRightUp()
+      //checkDiagonalLeftUp()
 
 
       //Cheack diagonal attempt
