@@ -6,8 +6,8 @@
         if (e.target.classList.contains("tile")){
 
             let gridPosition = e.target.id
-            let gridX = e.target.data-position-x
-            let gridY = e.target.data-position-y
+            let gridX = e.target.data-("x")
+            let gridY = e.target.data-("y")
             console.log({gridPosition, gridX, gridY})
 
             //run a reverse loop
@@ -40,7 +40,7 @@
 
     }
     setTimeout(
-        gameBoard.checkRightUpDiagonal,
+        gameBoard.checkForWinner,
         10
     )
     

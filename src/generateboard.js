@@ -2,8 +2,8 @@ class GenerateBoard {
     constructor(){
 
        this.gameBoard = []
-       this.firstPlayer = new Player('Player 1', 'Black');
-       this.secondPlayer = new Player('Player 2', 'Red');
+       this.firstPlayer = new Player('Player 1', '#8A9A5B');
+       this.secondPlayer = new Player('Player 2', '#885A61');
        this.generateGameBoard();
 
        this.player1 = true;
@@ -19,24 +19,22 @@ class GenerateBoard {
             }
           }
         return boardCode
-      }    
-
-
+      }
+      
+      //looping through v,h, and d functions to see if there is a winner
       checkForWinner(){
-      if (checkVertical() ||
-      checkHorizontal() ||
-      checkDiagonal()) {
+        if (this.checkVertical() ||
+        this.checkHorizontal() ||
+        this.checkDiagonal()) {
           alert ("Game Over");
+        }
       }
-      //   checkLeftUpDiagonal()
-      }
-
-
+      
+      //Check Veritcal
       checkVertical(){
-        // let gameOver = false;
         let verticalWinner = [];
-          for (let y = 0; y <= 6; y++) {
-            for (let x = 0; x <= 5; x++){
+        for (let y = 0; y <= 6; y++) {
+          for (let x = 0; x <= 5; x++){
               //the color of the div with the id of x-y
               let currentDiv = document.getElementById(`${x}-${y}`)
               verticalWinner.push(currentDiv.style.backgroundColor);
@@ -44,21 +42,16 @@ class GenerateBoard {
         } 
         for (let i = 0; i < verticalWinner.length; i++){
           
-          if (verticalWinner[i] && (verticalWinner[i] == verticalWinner[i + 1]) && (verticalWinner[i] == verticalWinner[i + 2]) && (verticalWinner[i] == verticalWinner[i + 3])){
-        //  gameOver = true;
+          if (verticalWinner[i] && (verticalWinner[i] == verticalWinner[i + 1]) && (verticalWinner[i] == verticalWinner[i + 2]) && (verticalWinner[i] == verticalWinner[i + 3]))
+          {
          return true
           }
-         
         }
         return false
-        //  if (gameOver){
-        //    alert ("Game Over")
-        //  }
       }
        
-
+      //Check Horizontal
       checkHorizontal(){
-        let gameOver = false;
         let HorizontalWinner = [];
           for (let x = 0; x <= 5; x++) {
             for (let y = 0; y <= 6; y++){
@@ -69,22 +62,17 @@ class GenerateBoard {
         } 
         for (let i = 0; i < HorizontalWinner.length; i++){
           //console.log(verticalWinner[i])
-          if (HorizontalWinner[i] && (HorizontalWinner[i] == HorizontalWinner[i + 1]) && (HorizontalWinner[i] == HorizontalWinner[i + 2]) && (HorizontalWinner[i] == HorizontalWinner[i + 3])){
-         gameOver = true;
+          if (HorizontalWinner[i] && (HorizontalWinner[i] == HorizontalWinner[i + 1]) && (HorizontalWinner[i] == HorizontalWinner[i + 2]) && (HorizontalWinner[i] == HorizontalWinner[i + 3]))
+          {
+          return true
           }
-         
         }
-         if (gameOver){
-           alert ("Game Over")
-         }
+        return false
       }
-      //checkDiagonalRightUp()
-      //checkDiagonalLeftUp()
+   
 
 
-      //Cheack diagonal attempt
-
-      
+      //Check Diagonal      
       checkDiagonal = () => {
         let gridX, gridY;
         let result = 1;
@@ -139,12 +127,10 @@ class GenerateBoard {
                   direction = directionsArray[3]
                 } else if (direction === directionsArray[3]) {
                   result += 1;
-                  currentGridPosition = this.gameBoard[x][y]
+                  currentGridPosition = this.gameBoard[x-1][y-1]
                 }
               }
                 break;
-      
-              
             }
           }
         }
@@ -156,45 +142,24 @@ class GenerateBoard {
         }
       }
 
-
-
-        playerTurn(){
+      //Determines if it is player 1 or player 2's turn
+      playerTurn(){
           if(this.player1){
             return "Player 1"
           } else {
             return "Player 2"
           }
         }
-
       }
 
+      //shows the status of whose turn it is at the top of the page
       function showPlayerStatus(){
         let status = document.querySelector('.playerturn span');
         status.innerText = gameBoard.playerTurn();
       }
 
-    
-        document.querySelector('.reset').addEventListener('click', function(){
+      //reloads pages when reset button is clicked
+      document.querySelector('.reset').addEventListener('click', function(){
           window.location.reload();
           return false;
         });
-      
-    
-    
-
-        //Winner announcement attempt
-
-        // if(playerWon === 1){
-        //   textAlign(CENTER, CENTER);
-        //   fill(255, 255, 0);
-        //   text("Yellow wins!", width / 2, ((height / board.length)*2 / 3)-25);
-          
-        // } else if(playerWon === 2){
-        //   textAlign(CENTER, CENTER);
-        //   fill(255, 0, 0);
-        //   text("Red wins!", width / 2, ((height / board.length)*2 / 3)-25);
-        // }
-        // else{
-        //   textAlign(CENTER, CENTER);
-        //   fill(0);
-        //   text("It's a draw!", width / 2, ((height / board.length)*2 / 3)-25)
