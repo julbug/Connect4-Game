@@ -21,15 +21,6 @@ class GenerateBoard {
         return boardCode
       }
       
-      //looping through v,h, and d functions to see if there is a winner
-      checkForWinner(){
-        if (this.checkVertical() ||
-        this.checkHorizontal() ||
-        this.checkDiagonal()) {
-          alert ("Game Over");
-        }
-      }
-      
       //Check Veritcal
       checkVertical(){
         let verticalWinner = [];
@@ -71,75 +62,55 @@ class GenerateBoard {
       }
    
 
-
       //Check Diagonal      
       checkDiagonal = () => {
-        let gridX, gridY;
+        // let gridX, gridY;
         let result = 1;
-        let currentDiv = document.getElementById(`${x}-${y}`)
-        let currentGridPosition = this.gameBoard[gridX][gridY]
-        gridX = currentDiv[0]
-        gridY = currnetDiv[2]
-        let direction = 'se'
-        const directionsArray = ['se', 'ne', 'sw', 'nw']
+        let isWinner = false;
+        // console.log({gridX, gridY, currentGridPosition});
+      
+        for(let x = 0; x < 6; x++) {
+          for(let y = 0; y < 7; y++) {
+            let currentDiv = document.getElementById(`${x}-${y}`).style.backgroundColor;
+            
+            for(let i = 0; i < 4; i++) {
+              if ((x+3 < 5) && (y+3 < 7)) {
+                
+                let first = document.getElementById(`${x+1}-${y+1}`).style.backgroundColor || 'none';
+                let second = document.getElementById(`${x+2}-${y+2}`).style.backgroundColor || 'none';
+                let third = document.getElementById(`${x+3}-${y+3}`).style.backgroundColor || 'none';
 
-        console.log({gridX, gridY, currentDiv, currentGridPosition});
-      
-        for(let x = 1; x < 4; x++) {
-          for(let y = 1; y < 4; y++) {
-            switch(direction) {
-              case directionsArray[0]:
-              if(currentGridPosition === this.gameBoard[x][y]) {
-                if(result === 1 && direction !== directionsArray[0]) {
-                  direction = directionsArray[0]
-                } else if (direction === directionsArray[0]) {
-                  result += 1;
-                  currentGridPosition = this.gameBoard[x][y]
+                if(currentDiv === first && currentDiv == second && currentDiv === third) {
+                  console.log('Match SE ***************> ', {currentDiv, second, third, first});
+
+                  isWinner = true;
                 }
+
               }
-                break;
-      
-              case directionsArray[1]:
-              if(currentGridPosition === this.gameBoard[x-1][y+1]) {
-                if(result === 1 && direction !== directionsArray[1]) {
-                  direction = directionsArray[1]
-                } else if (direction === directionsArray[1]) {
-                  result += 1;
-                  currentGridPosition = this.gameBoard[x-1][y+1]
+
+              if ((x-3 > 0) && (y+3 < 7)) {
+
+                // console.log({nextDiv: document.getElementById(`${x-1}-${y+1}`), x, y})
+
+                let first = document.getElementById(`${x-1}-${y+1}`).style.backgroundColor || 'none';
+                let second = document.getElementById(`${x-2}-${y+2}`).style.backgroundColor || 'none';
+                let third = document.getElementById(`${x-3}-${y+3}`).style.backgroundColor || 'none';
+
+                if(currentDiv === first && currentDiv == second && currentDiv === third) {
+                  console.log('Match NE ***************> ', {currentDiv, second, third, first});
+                  
+                  isWinner = true;
                 }
+
               }
-                break;
-      
-              case directionsArray[2]:
-              if(currentGridPosition === this.gameBoard[x+1][y-1]) {
-                if(result === 1 && direction !== directionsArray[2]) {
-                  direction = directionsArray[2]
-                } else if (direction === directionsArray[2]) {
-                  result += 1;
-                  currentGridPosition = this.gameBoard[x+1][y-1]
-                }
-              }
-                break;
-      
-              case directionsArray[3]:
-              if(currentGridPosition === this.gameBoard[x-1][y-1]) {
-                if(result === 1 && direction !== directionsArray[3]) {
-                  direction = directionsArray[3]
-                } else if (direction === directionsArray[3]) {
-                  result += 1;
-                  currentGridPosition = this.gameBoard[x-1][y-1]
-                }
-              }
-                break;
+
+            }
+           
             }
           }
-        }
-      
-        if (result === 4) {
-          return true;
-        } else {
-          return false;
-        }
+  
+        return isWinner;
+
       }
 
       //Determines if it is player 1 or player 2's turn
@@ -150,6 +121,19 @@ class GenerateBoard {
             return "Player 2"
           }
         }
+
+
+         //looping through v,h, and d functions to see if there is a winner
+      checkForWinner(){
+        if (
+          this.checkVertical() ||
+        this.checkHorizontal() ||
+        this.checkDiagonal()
+        ) {
+
+          setTimeout(() => alert ("Game Over"), 50)
+        }
+      }
       }
 
       //shows the status of whose turn it is at the top of the page
