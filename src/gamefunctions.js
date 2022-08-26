@@ -2,12 +2,11 @@
 //function for changing player turns and chip color
     document.querySelector("#game-board").onclick= function(e){
 
-//check if its a tile and if its player one
-
+//check if its a tile and if its player one        
 let gridPosition = e.target.id
 let gridX = e.target.id[0]
 let gridY = e.target.id[2]
-console.log({gridPosition, gridX, gridY, checkThis: e.target.classList.containes("tile")})
+console.log({gridPosition, gridX, gridY, checkThis: e.target.classList.contains("tile")})
 
         if (e.target.classList.contains("tile")){
 
@@ -42,8 +41,8 @@ console.log({gridPosition, gridX, gridY, checkThis: e.target.classList.containes
 
     }
     setTimeout(
-        gameBoard.checkForWinner,
-        10
+        gameBoard.checkForWinner(),
+        100
     )
     
 }

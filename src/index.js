@@ -6,7 +6,7 @@ let board;
 
 
 //generates board
-let gameBoard = new GenerateBoard;
+let gameBoard = new GenerateBoard();
 
 
 //generates the players
