@@ -5,7 +5,6 @@ class GenerateBoard {
        this.firstPlayer = new Player('Player 1', '#8A9A5B');
        this.secondPlayer = new Player('Player 2', '#885A61');
        this.generateGameBoard();
-
        this.player1 = true;
        
     }
@@ -21,7 +20,7 @@ class GenerateBoard {
         return boardCode
       }
       
-      //Check Veritcal
+      //Check Vertical
       checkVertical(){
         let verticalWinner = [];
         for (let y = 0; y <= 6; y++) {
@@ -81,8 +80,7 @@ class GenerateBoard {
                 let third = document.getElementById(`${x+3}-${y+3}`).style.backgroundColor || 'none';
 
                 if(currentDiv === first && currentDiv == second && currentDiv === third) {
-                  console.log('Match SE ***************> ', {currentDiv, second, third, first});
-
+                  
                   isWinner = true;
                 }
 
@@ -90,19 +88,18 @@ class GenerateBoard {
 
               if ((x-3 > 0) && (y+3 < 7)) {
 
-                // console.log({nextDiv: document.getElementById(`${x-1}-${y+1}`), x, y})
-
                 let first = document.getElementById(`${x-1}-${y+1}`).style.backgroundColor || 'none';
                 let second = document.getElementById(`${x-2}-${y+2}`).style.backgroundColor || 'none';
                 let third = document.getElementById(`${x-3}-${y+3}`).style.backgroundColor || 'none';
 
                 if(currentDiv === first && currentDiv == second && currentDiv === third) {
-                  console.log('Match NE ***************> ', {currentDiv, second, third, first});
-                  
+                 
                   isWinner = true;
                 }
 
+              
               }
+
 
             }
            
@@ -126,15 +123,19 @@ class GenerateBoard {
          //looping through v,h, and d functions to see if there is a winner
       checkForWinner(){
         if (
-          this.checkVertical() ||
+        this.checkVertical() ||
         this.checkHorizontal() ||
         this.checkDiagonal()
         ) {
 
           setTimeout(() => alert ("Game Over"), 50)
         }
+
       }
-      }
+      
+    }
+  
+
 
       //shows the status of whose turn it is at the top of the page
       function showPlayerStatus(){
