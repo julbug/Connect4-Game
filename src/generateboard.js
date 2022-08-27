@@ -140,10 +140,8 @@ class GenerateBoard {
           if(!this.player1) {
 
             winnerMessage.innerHTML = 'Game Over, Player 1 is the winner!';
-            // alert ("Game Over, Player 1 is the winner!")
           } else {
             winnerMessage.innerHTML = 'Game Over, Player 2 is the winner!';
-            // alert ("Game Over, Player 2 is the winner!")
           }
           
         }, 50)
