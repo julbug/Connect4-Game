@@ -165,8 +165,3 @@ class GenerateBoard {
         window.location.reload();
         return false;
       });
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
